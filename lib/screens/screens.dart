@@ -36,6 +36,16 @@ class _ScreensState extends State<Screens> {
             ],
           ),
         ),
+        actions: [
+          if (_selectIndex == 2)
+            RawMaterialButton(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              onPressed: () {},
+              child: SvgPicture.asset('assets/icons/timer.svg'),
+            )
+        ],
       ),
       bottomNavigationBar: Theme(
         data: ThemeData(

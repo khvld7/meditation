@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:meditation/components/card_widget.dart';
 import 'package:meditation/components/style.dart';
+import 'package:meditation/screens/exercises_data/alternate_breathing.dart';
+import 'package:meditation/screens/exercises_data/asymmetric_breathing.dart';
+import 'package:meditation/screens/exercises_data/breath.dart';
+import 'package:meditation/screens/exercises_data/breathing_aromatic_oils.dart';
+import 'package:meditation/screens/exercises_data/breathing_children.dart';
+import 'package:meditation/screens/exercises_data/breathing_resistance.dart';
+import 'package:meditation/screens/exercises_data/diaphragmatic_breathing.dart';
+import 'package:meditation/screens/exercises_data/inflating.dart';
+import 'package:meditation/screens/exercises_data/observation.dart';
+import 'package:meditation/screens/exercises_data/resonant_breathing.dart';
+import 'package:meditation/screens/exercises_data/square_breathing.dart';
 
 class Exercises extends StatefulWidget {
   const Exercises({super.key});
@@ -42,6 +53,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Наблюдение за процессом дыхания',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return Observation();
+                            })),
                           ),
                         ),
                         Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
@@ -49,6 +63,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Надувание шарика',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return Inflating();
+                            })),
                           ),
                         ),
                       ],
@@ -63,6 +80,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Асимметричное дыхание\n(дыхание через «трубочку»)',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return AsymmetricBreathing();
+                            })),
                           ),
                         ),
                       ],
@@ -77,6 +97,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Дыхание «по квадрату» \n(4-4-4-4)',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return SquareBreathing();
+                            })),
                           ),
                         ),
                         Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
@@ -84,6 +107,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Дыхание\n4-7-8',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return Breath();
+                            })),
                           ),
                         ),
                       ],
@@ -98,6 +124,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Дыхание с сопротивлением',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return BreathingResistance();
+                            })),
                           ),
                         ),
                       ],
@@ -112,6 +141,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Резонансное когерентное дыхание',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return ResonantBreathing();
+                            })),
                           ),
                         ),
                         Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
@@ -119,6 +151,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Дыхание с аромамаслами',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return BreathingAromaticOils();
+                            })),
                           ),
                         ),
                       ],
@@ -133,6 +168,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Диафрагмальное дыхание',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return DiaphragmaticBreathing();
+                            })),
                           ),
                         ),
                       ],
@@ -147,6 +185,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Попеременное дыхание через каждую ноздрю',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return AlternateBreathing();
+                            })),
                           ),
                         ),
                         Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
@@ -154,6 +195,9 @@ class _ExercisesState extends State<Exercises> {
                           child: CardWidget(
                             name: 'Дыхательные упражнения для детей',
                             color: exercisesCardColor,
+                            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+                              return BreathingChildren();
+                            })),
                           ),
                         ),
                       ],
