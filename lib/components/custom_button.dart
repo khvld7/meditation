@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final Widget? child;
+  final TextStyle? textStyle;
   final double? height;
   final double? width;
   final Function()? onPressed;
@@ -28,6 +29,7 @@ class CustomButton extends StatelessWidget {
     this.textColor,
     this.borderRadius,
     this.border,
+    this.textStyle,
   });
 
   @override
@@ -48,12 +50,7 @@ class CustomButton extends StatelessWidget {
         splashColor: Colors.transparent,
         onPressed: isActive ? onPressed : () {},
         child: child,
-        textStyle: TextStyle(
-          color: textColor,
-          fontFamily: 'Nunito',
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-        ),
+        textStyle: textStyle,
       ),
     );
   }

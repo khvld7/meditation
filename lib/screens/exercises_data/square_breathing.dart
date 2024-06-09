@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:meditation/components/style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:meditation/timer.dart';
 
 class SquareBreathing extends StatelessWidget {
   const SquareBreathing({super.key});
@@ -37,7 +40,15 @@ class SquareBreathing extends StatelessWidget {
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             hoverColor: Colors.transparent,
-            onPressed: () {},
+            onPressed: () {showAdaptiveDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 30.0, sigmaY: 30.0),
+                    child: TimerWidget(),
+                  );
+                },
+              );},
             child: SvgPicture.asset('assets/icons/timer.svg'),
           )
         ],

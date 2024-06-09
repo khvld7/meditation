@@ -1,10 +1,16 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:meditation/adapter/hive_adapter.dart';
+import 'package:meditation/client/hive_names.dart';
 import 'package:meditation/components/style.dart';
 import 'package:meditation/screens/diary.dart';
+import 'package:meditation/screens/diary_data/add_pin.dart';
 import 'package:meditation/screens/exercises.dart';
 import 'package:meditation/screens/programms.dart';
 import 'package:meditation/screens/settings.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:meditation/timer.dart';
 
 class Screens extends StatefulWidget {
   const Screens({super.key});
@@ -23,28 +29,59 @@ class _ScreensState extends State<Screens> {
   int _selectIndex = 0;
   @override
   Widget build(BuildContext context) {
+    var diaryBox = Hive.box<DiaryDB>(HiveBoxes.diary);
     return Scaffold(
       appBar: AppBar(
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Row(
             children: [
-              if (_selectIndex == 0) Text('Программы', style: appBarText),
-              if (_selectIndex == 1) Text('Дневник настроения', style: appBarText),
-              if (_selectIndex == 2) Text('Дыхательные упражнения', style: appBarText),
-              if (_selectIndex == 3) Text('Настройки', style: appBarText),
+              if (_selectIndex == 0) Expanded(child: Text('Программы', style: appBarText, maxLines: 2, softWrap: true)),
+              if (_selectIndex == 1) Expanded(child: Text('Дневник настроения', style: appBarText, maxLines: 2, softWrap: true)),
+              if (_selectIndex == 2) Expanded(child: Text('Дыхательные упражнения', style: appBarText, maxLines: 2, softWrap: true)),
+              if (_selectIndex == 3) Expanded(child: Text('Настройки', style: appBarText, maxLines: 2, softWrap: true)),
             ],
           ),
         ),
         actions: [
+          if (_selectIndex == 1 && diaryBox.isNotEmpty)
+            RawMaterialButton(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return AddPin();
+                    },
+                  ),
+                ).then((value) => setState(() {}));
+              },
+              child: SvgPicture.asset(
+                'assets/icons/plus.svg',
+                colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
+              ),
+            ),
           if (_selectIndex == 2)
             RawMaterialButton(
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
               hoverColor: Colors.transparent,
-              onPressed: () {},
+              onPressed: () {
+                showAdaptiveDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 30.0, sigmaY: 30.0),
+                      child: TimerWidget(),
+                    );
+                  },
+                );
+              },
               child: SvgPicture.asset('assets/icons/timer.svg'),
-            )
+            ),
         ],
       ),
       bottomNavigationBar: Theme(

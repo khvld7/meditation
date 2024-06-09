@@ -90,10 +90,10 @@ class _OnboardingFourState extends State<OnboardingFour> {
                     child: Row(
                       children: [
                         Expanded(
-                          child: CustomButton(
+                          child: CustomButton(textStyle: TextStyle(fontSize: 14,fontWeight: FontWeight.w700,fontFamily: 'Nunito'),
                             child: Text('Продолжить'),
                             textColor: Colors.white,
-                            color: Color.fromRGBO(56, 212, 197, 1),
+                            color: buttonColor,
                             borderRadius: BorderRadius.circular(10),
                             onPressed: () {
                               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context) {

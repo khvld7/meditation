@@ -1,16 +1,22 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:meditation/adapter/hive_adapter.dart';
+import 'package:meditation/client/hive_names.dart';
+import 'package:meditation/onboarding/main.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:meditation/screens/screens.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  // runApp(const MyApp());
-  runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(),
-    ),
-  );
+int? initScreen;
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(DiaryDBAdapter());
+  await Hive.openBox<DiaryDB>(HiveBoxes.diary);
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  initScreen = await prefs.getInt("initScreen");
+  await prefs.setInt("initScreen", 1);
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -23,8 +29,17 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Screens(),
+    return MaterialApp(
+      localizationsDelegates: <LocalizationsDelegate<Object>>[
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('ru', 'RU'),
+        const Locale('en', 'US'),
+      ],
+      home: initScreen == 0 || initScreen == null ? MainOnboarding() : Screens(),
     );
   }
 }

@@ -41,13 +41,13 @@ class OnboardingOne extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: MediaQuery.sizeOf(context).width / 15,
-              right: MediaQuery.sizeOf(context).width / 7,
-              top: MediaQuery.sizeOf(context).height / 3.5,
-            ),
-            child: Positioned(
+          Positioned(
+            child: Container(
+              margin: EdgeInsets.only(
+                left: MediaQuery.sizeOf(context).width / 15,
+                right: MediaQuery.sizeOf(context).width / 7,
+                top: MediaQuery.sizeOf(context).height / 3.5,
+              ),
               child: Image.asset(
                 'assets/images/onboarding_one/star.png',
                 width: MediaQuery.sizeOf(context).width / 2,
@@ -55,12 +55,12 @@ class OnboardingOne extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: MediaQuery.sizeOf(context).width / 2,
-              top: MediaQuery.sizeOf(context).height / 3.5,
-            ),
-            child: Positioned(
+          Positioned(
+            child: Container(
+              margin: EdgeInsets.only(
+                left: MediaQuery.sizeOf(context).width / 2,
+                top: MediaQuery.sizeOf(context).height / 3.5,
+              ),
               child: Image.asset(
                 'assets/images/onboarding_one/rectangle.png',
                 width: MediaQuery.sizeOf(context).width / 2,
@@ -68,12 +68,12 @@ class OnboardingOne extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: MediaQuery.sizeOf(context).width / 4.2,
-              top: MediaQuery.sizeOf(context).height / 1.75,
-            ),
-            child: Positioned(
+          Positioned(
+            child: Container(
+              margin: EdgeInsets.only(
+                left: MediaQuery.sizeOf(context).width / 4.2,
+                top: MediaQuery.sizeOf(context).height / 1.75,
+              ),
               child: Image.asset(
                 'assets/images/onboarding_one/ellipse.png',
                 width: MediaQuery.sizeOf(context).width / 2,

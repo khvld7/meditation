@@ -19,7 +19,7 @@ class DiaryDBAdapter extends TypeAdapter<DiaryDB> {
     return DiaryDB(
       text: fields[1] as String,
       title: fields[0] as String,
-      date: fields[2] as String,
+      date: fields[2] as DateTime,
     );
   }
 

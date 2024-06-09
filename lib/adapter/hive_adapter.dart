@@ -8,7 +8,7 @@ class DiaryDB extends HiveObject {
   @HiveField(1)
   String text;
   @HiveField(2)
-  String date;
+  DateTime date;
 
   DiaryDB({required this.text, required this.title, required this.date});
 }
